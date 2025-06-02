@@ -1,0 +1,206 @@
+/* Reset básico */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #004b8d, #0090d6);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+/* Container */
+.container {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 10px 10px 10px 10px rgb(0, 0, 0);
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 0.7s ease forwards;
+}
+
+/* Título */
+h1 {
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #030303; /* laranja WEG */
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1.1px;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+/* Formulário */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Bloco de formulário BEM */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels */
+.form-label {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: #000000;
+  transition: color 0.3s ease;
+}
+
+/* Inputs e textarea */
+input.form-control,
+textarea.form-control {
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.2);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input.form-control:focus,
+textarea.form-control:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 8px #000000;
+  color: #004b8d;
+  font-weight: 600;
+}
+
+/* Checkbox grupo */
+.form-check {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.form-check-input {
+  margin-right: 0.75rem;
+  width: 18px;
+  height: 18px;
+  accent-color: #000000;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.form-check-input:hover {
+  transform: scale(1.1);
+}
+
+.form-check-label {
+  user-select: none;
+  font-weight: 600;
+}
+
+/* Botão */
+button.btn {
+  padding: 0.75rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: #0004fd;
+  color: #ffffff;
+  box-shadow: 0 4px 10px #0276e2aa;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+  user-select: none;
+}
+
+button.btn:hover,
+button.btn:focus {
+  background-color: #10d763;
+  box-shadow: 0 6px 18px #000f06cc;
+  color: #fff;
+  outline: none;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  margin-top: 3rem;
+  color: #f47321;
+  font-weight: 600;
+  font-size: 0.9rem;
+  user-select: none;
+}
+
+footer a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #fff;
+}
+
+/* Inputs adicionais de serviço */
+input.form-control.mb-2 {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+input.form-control.mb-2:focus {
+  border-color: #f47321;
+  background: rgba(255, 255, 255, 0.3);
+  color: #004b8d;
+  font-weight: 600;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .container {
+    padding: 2rem 1rem;
+    max-width: 90vw;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  button.btn {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .form-check-label {
+    font-size: 0.9rem;
+  }
+}
+
+/* Animações */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
