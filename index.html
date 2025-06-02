@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orçamento de Motor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-dark text-light">
+
+    <div class="container py-5">
+        <h1 class="text-center mb-4">Orçamento de Motores Elétricos</h1>
+
+        <form id="formOrcamento">
+            <!-- Dados do cliente -->
+            <div class="mb-3">
+                <label class="form-label">Nome do Cliente</label>
+                <input type="text" name="nome" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Telefone (com DDD)</label>
+                <input type="tel" name="telefone" class="form-control" required>
+            </div>
+
+            <!-- Dados da placa -->
+            <div class="mb-3">
+                <label class="form-label">Marca do Motor e outro dados</label>
+                <textarea name="placaMotor" class="form-control" rows="3" required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">CV (Potência)</label>
+                <input type="text" name="cv" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">RPM</label>
+                <input type="text" name="rpm" class="form-control" required>
+            </div>
+
+            <!-- Causa da queima (aparece só se recondicionamento estiver marcado) -->
+            <div class="mb-3" id="causaQueimaGroup" hidden>
+                <label class="form-label">Causa da Queima</label>
+                <textarea name="causaQueima" id="causaQueima" class="form-control" rows="3"></textarea>
+            </div>
+
+            <!-- Serviços -->
+            <div class="mb-3">
+                <label class="form-label">Serviços</label>
+
+                <!-- Rolamento -->
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="rolamento" name="rolamento" onclick="toggleInput('inputRolamento')">
+                    <label class="form-check-label" for="rolamento">Rolamento</label>
+                </div>
+                <input type="text" class="form-control mb-2" id="inputRolamento" name="rolamentoDesc" placeholder="Descreva o Rolamento" hidden>
+
+                <!-- Recondicionamento -->
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="recondicionamento" name="recondicionamento" onclick="toggleCausaQueima()">
+                    <label class="form-check-label" for="recondicionamento">Recondicionamento</label>
+                </div>
+
+                <!-- Revisão -->
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="revisao" name="revisao" onclick="toggleInput('inputRevisao')">
+                    <label class="form-check-label" for="revisao">Revisão</label>
+                </div>
+                <input type="text" class="form-control mb-2" id="inputRevisao" name="revisaoDesc" placeholder="Descreva a Revisão" hidden>
+
+                <!-- Pintura -->
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="pintura" name="pintura" onclick="toggleInput('inputPintura')">
+                    <label class="form-check-label" for="pintura">Pintura</label>
+                </div>
+                <input type="text" class="form-control mb-2" id="inputPintura" name="pinturaDesc" placeholder="Descreva a Pintura" hidden>
+
+                <!-- Torno -->
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="torno" name="torno" onclick="toggleInput('inputTorno')">
+                    <label class="form-check-label" for="torno">Torno</label>
+                </div>
+                <input type="text" class="form-control mb-2" id="inputTorno" name="tornoDesc" placeholder="Descreva o serviço de Torno" hidden>
+
+                <!-- Selo -->
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="selo" name="selo" onclick="toggleInput('inputSelo')">
+                    <label class="form-check-label" for="selo">Selo</label>
+                </div>
+                <input type="text" class="form-control mb-2" id="inputSelo" name="seloDesc" placeholder="Descreva o Selo" hidden>
+
+                <!-- Capacitor -->
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="capacitor" name="capacitor" onclick="toggleInput('inputCapacitor')">
+                    <label class="form-check-label" for="capacitor">Capacitor</label>
+                </div>
+                <input type="text" class="form-control mb-2" id="inputCapacitor" name="capacitorDesc" placeholder="Descreva o Capacitor" hidden>
+
+                <!-- Parafusos -->
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="parafusos" name="parafusos" onclick="toggleInput('inputParafusos')">
+                    <label class="form-check-label" for="parafusos">Parafusos</label>
+                </div>
+                <input type="text" class="form-control mb-2" id="inputParafusos" name="parafusosDesc" placeholder="Descreva os Parafusos" hidden>
+
+                <!-- Polia -->
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="polia" name="polia" onclick="toggleInput('inputPolia')">
+                    <label class="form-check-label" for="polia">Polia</label>
+                </div>
+                <input type="text" class="form-control mb-2" id="inputPolia" name="poliaDesc" placeholder="Descreva a Polia" hidden>
+
+                <!-- Novos Serviços -->
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="ventilador" name="ventilador" onclick="toggleInput('inputVentilador')">
+                    <label class="form-check-label" for="ventilador">Ventilador</label>
+                </div>
+                <input type="text" class="form-control mb-2" id="inputVentilador" name="ventiladorDesc" placeholder="Descreva o Ventilador" hidden>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="platinado" name="platinado" onclick="toggleInput('inputPlatinado')">
+                    <label class="form-check-label" for="platinado">Platinado</label>
+                </div>
+                <input type="text" class="form-control mb-2" id="inputPlatinado" name="platinadoDesc" placeholder="Descreva o Platinado" hidden>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="centrifugo" name="centrifugo" onclick="toggleInput('inputCentrifugo')">
+                    <label class="form-check-label" for="centrifugo">Centrífugo</label>
+                </div>
+                <input type="text" class="form-control mb-2" id="inputCentrifugo" name="centrifugoDesc" placeholder="Descreva o Centrífugo" hidden>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">Enviar para WhatsApp</button>
+        </form>
+    </div>
+
+    <footer>
+        <a href="#"><p>Breno Santos <i class="bi bi-tools"></i></p></a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
